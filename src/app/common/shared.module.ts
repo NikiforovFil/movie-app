@@ -4,6 +4,8 @@ import {NgModule} from "@angular/core"
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations"
 import {RouterModule} from "@angular/router"
 import {MatListModule} from "@angular/material/list"
+import {MatIconModule} from '@angular/material/icon'
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -11,13 +13,17 @@ import {MatListModule} from "@angular/material/list"
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: []
 })

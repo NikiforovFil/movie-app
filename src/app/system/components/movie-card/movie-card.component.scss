@@ -1,0 +1,16 @@
+.movie-card{
+  width: 300px;
+}
+
+.movie-card__header-image {
+  background-size: cover;
+}
+
+.movie-card__setting_btn{
+  margin-left: auto;
+}
+
+.movie-card_main-btn-wrap{
+  display: flex;
+  justify-content: flex-end;
+}

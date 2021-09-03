@@ -1,0 +1,41 @@
+<mat-card class="movie-card">
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      class="movie-card__header-image"
+      [style.background-image]="'url('+getImgUrl(movie.poster_path)+')'"
+    ></div>
+    <mat-card-title>{{movie.title}}</mat-card-title>
+    <mat-card-subtitle>
+      <span *ngFor=" let g of movie.genres; let i = index">
+        <span *ngIf="i > 0">, </span>{{g['name']}}</span>
+    </mat-card-subtitle>
+
+    <button mat-icon-button class="movie-card__setting_btn">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  </mat-card-header>
+
+  <img mat-card-image src="{{getImgUrl(movie.backdrop_path)}}" alt="{{movie.title}}">
+
+  <mat-card-content>
+    <p>
+      {{movie.overview}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+
+
+    <div class="movie-card_main-btn-wrap">
+      <button mat-icon-button>
+        <mat-icon>visibility</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+
+  </mat-card-actions>
+</mat-card>

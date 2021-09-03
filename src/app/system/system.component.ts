@@ -11,7 +11,6 @@ import {MovieService} from "./services/movie.service"
 export class SystemComponent implements OnInit {
   isLoaded = false
   movie: Movie = new Movie('')
-  title :string = ''
 
 
   constructor(private movieService: MovieService) {}
@@ -20,11 +19,7 @@ export class SystemComponent implements OnInit {
     this.movieService.getMovie()
       .subscribe((data: Movie) => {
         this.movie = data
-        this.title = data.original_title
         this.isLoaded = true
-        console.log(this.movie)
-        console.log('isLoaded ', this.isLoaded)
-        console.log(this.movie.original_title)
       })
   }
 
