@@ -1,0 +1,26 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: Open Sans, sans-serif;
+  color: #4f5f6f;
+  overflow-x: hidden;
+}
+
+.app {
+  position: relative;
+  width: 100%;
+  padding-left: 230px;
+  min-height: 100vh;
+  margin: 0 auto;
+  left: 0;
+  background-color: #f0f3f6;
+  box-shadow: 0 0 3px #ccc;
+  transition: left .3s ease,padding-left .3s ease;
+  overflow: hidden;
+}
+
+.main-wrapper {
+  position: absolute;
+  overflow-y: auto;
+}

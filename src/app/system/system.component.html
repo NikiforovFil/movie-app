@@ -1,0 +1,24 @@
+<div class="main-wrapper">
+  <div class="app ">
+
+    <mat-drawer-container class="drawer" autosize>
+      <mat-drawer #drawer class="sidenav" mode="side" opened>
+        <MF-sidebar></MF-sidebar>
+      </mat-drawer>
+
+      <div class="example-sidenav-content">
+        <MF-navbar></MF-navbar>
+        <div *ngIf="isLoaded">
+          <span>{{movie.original_title}}</span>
+          <br>
+          <img src='{{"https://image.tmdb.org/t/p/w500/" + movie.poster_path}}' alt="photo" width="200">
+        </div>
+      </div>
+
+    </mat-drawer-container>
+
+  </div>
+</div>
+
+
+
