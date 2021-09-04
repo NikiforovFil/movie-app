@@ -1,5 +1,17 @@
-<mat-list role="list" class="navbar-component">
-  <mat-list-item role="listitem">Item 1</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<div class="navbar-component">
+  <button mat-raised-button color="accent" (click)="onChangeMovieType('popular')">Popular</button>
+
+  <button mat-raised-button color="primary" (click)="onChangeMovieType('top_rated')">Top rated</button>
+
+  <button mat-raised-button color="primary" (click)="onChangeMovieType('now_playing')">Now playing</button>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="genresMenu">Genres <mat-icon>keyboard_arrow_down</mat-icon></button>
+  <mat-menu #genresMenu="matMenu" yPosition="below">
+    <button mat-menu-item *ngFor="let g of genres">{{g['name']}}</button>
+  </mat-menu>
+
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="yearsMenu">Years <mat-icon>keyboard_arrow_down</mat-icon></button>
+  <mat-menu #yearsMenu="matMenu" yPosition="below">
+    <button mat-menu-item *ngFor="let y of years">{{y}}</button>
+  </mat-menu>
+</div>

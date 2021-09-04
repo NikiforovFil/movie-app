@@ -3,25 +3,40 @@
     <div
       mat-card-avatar
       class="movie-card__header-image"
-      [style.background-image]="'url('+getImgUrl(movie.poster_path)+')'"
+      [style.background-image]="'url('+movieService.getImgUrl(movie.poster_path)+')'"
     ></div>
     <mat-card-title>{{movie.title}}</mat-card-title>
-    <mat-card-subtitle>
-      <span *ngFor=" let g of movie.genres; let i = index">
-        <span *ngIf="i > 0">, </span>{{g['name']}}</span>
-    </mat-card-subtitle>
 
-    <button mat-icon-button class="movie-card__setting_btn">
+    <button class="movie-card__setting_btn" mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
 
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
+    <mat-card-subtitle>
+      <span *ngFor=" let g of getGenres(); let i = index">
+        <span *ngIf="i > 0">, </span>{{g}}</span>
+    </mat-card-subtitle>
   </mat-card-header>
 
-  <img mat-card-image src="{{getImgUrl(movie.backdrop_path)}}" alt="{{movie.title}}">
+  <img mat-card-image src="{{movieService.getImgUrl(movie.backdrop_path)}}" alt="{{movie.title}}" class="movie-card__content-img">
 
   <mat-card-content>
-    <p>
-      {{movie.overview}}
+    <p class="movie-card__content">
+      {{getDescription()}}
     </p>
   </mat-card-content>
   <mat-card-actions>

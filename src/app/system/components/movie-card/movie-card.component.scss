@@ -1,16 +1,34 @@
-.movie-card{
-  width: 300px;
+.movie-card {
+  max-width: 300px;
+  min-width: 200px;
+  height: 400px;
+  margin-bottom: 10px;
+}
+
+.movie-card__content{
+  height: 60px;
+  overflow: hidden;
 }
 
 .movie-card__header-image {
   background-size: cover;
 }
 
-.movie-card__setting_btn{
+.movie-card__setting_btn {
   margin-left: auto;
 }
 
-.movie-card_main-btn-wrap{
-  display: flex;
-  justify-content: flex-end;
+.movie-card_main-btn-wrap {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+
+  button mat-icon {
+    font-size: 20px;
+  }
+}
+
+.movie-card__content-img{
+  //max-height: 187px;
+  //min-height: 100px;
 }
