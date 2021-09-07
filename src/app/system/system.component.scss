@@ -4,9 +4,18 @@ $singleCardInRow:469px;
 .drawer {
   width: 100%;
   min-height: 100vh;
+  position: fixed;
+
+  mat-drawer{
+    border: none;
+
+    mf-sidebar {
+      overflow-y: hidden;
+    }
+  }
 
   .sidenav {
-    width: 230px;
+    width: 170px;
   }
 
   .movies-container {
