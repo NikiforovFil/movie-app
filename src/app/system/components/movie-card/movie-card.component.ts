@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core'
 import {Movie} from "../../../common/models/Movie.model"
+import {MovieService} from "../../services/movie.service"
 
 @Component({
   selector: 'MF-movie-card',
@@ -8,23 +9,24 @@ import {Movie} from "../../../common/models/Movie.model"
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie: Movie = new Movie('')
+  @Input() genresMap: { [id: number]: string } = {}
+
   backgroundImage: string = ''
 
-
-  constructor() {
-  }
+  constructor(public movieService: MovieService) { }
 
   ngOnInit(): void {
     this.backgroundImage = this.movie.backdrop_path
-    this.movie.genres = [
-      {id: 0, name: 'drama'},
-      {id: 1, name: 'kriminal'},
-      {id: 2, name: 'comedy'}
-    ]
-    console.log(this.movie)
   }
 
-  getImgUrl(data: string): string {
-    return 'https://image.tmdb.org/t/p/w500/' + data
+  getGenres(): string[] {
+    if (this.movie.genres) return this.movie.genres
+    return this.movie.genresId.map(id => this.genresMap[id])
   }
+
+  getDescription(): string {
+    if (this.movie.overview.length < 140) return this.movie.overview
+    return this.movie.overview.slice(0, 130) + '...'
+  }
+
 }

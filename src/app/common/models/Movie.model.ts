@@ -1,17 +1,19 @@
 export class Movie {
   adult: boolean
   backdrop_path: string
-  // belongs_to_collection: null
-  // budget: 63000000
   genres: any[]
-  // homepage: "http://www.foxmovies.com/movies/fight-club"
   id: number
-  // imdb_id: "tt0137523"
-  // original_language: "en"
   original_title: string
   overview: string
-//   popularity: 41.795
   poster_path: string
+  title: string
+  genresId:number[]
+  // belongs_to_collection: null
+  // budget: 63000000
+  // homepage: "http://www.foxmovies.com/movies/fight-club"
+  // imdb_id: "tt0137523"
+  // original_language: "en"
+//   popularity: 41.795
 //   production_companies: (7) [{ … }
 // production_countries: (2) [{…
 // release_date: "1999-10-15"
@@ -21,7 +23,6 @@ export class Movie {
 // }]
 // status: "Released"
 // tagline: "Mischief. Mayhem. Soap."
-title: string
 // video: false
 // vote_average: 8.4
 // vote_count: 22316
@@ -35,5 +36,6 @@ title: string
     this.title = data.title
     this.genres = data.genres
     this.backdrop_path = data.backdrop_path
+    this.genresId = data.genre_ids
   }
 }

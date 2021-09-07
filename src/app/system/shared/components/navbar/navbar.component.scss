@@ -1,9 +1,58 @@
-.navbar-component {
-  height: 70px;
-  display: flex;
-  border: 1px solid black;
+@import './src/app/system/system.component';
 
-  mat-list-item {
-    width: 100px;
+.navbar-component {
+  height: 55px;
+  display: flex;
+  background-color: #26d4f7;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    height: 40px;
+    margin: auto;
+    width: 150px;
+  }
+
+  .navbar-component__user-icon-wrapper {
+    color: ghostwhite;
+
+    button {
+      width: 40px;
+      text-align: left;
+
+      mat-icon {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .navbar-component__menu-btn {
+    display: none;
+  }
+
+  .navbar-component__logo {
+    width: 40px;
+    text-align: center;
+  }
+
+  .navbar-component__movie-types {
+    width: 100%;
+    display: flex;
+  }
+
+  @media screen  {
+    @media (max-width: $mobileTopBorderPx) {
+      .navbar-component__menu-btn {
+        display: block;
+
+        button {
+          width: 40px;
+        }
+      }
+      .navbar-component__movie-types {
+        display: none;
+      }
+    }
+
   }
 }

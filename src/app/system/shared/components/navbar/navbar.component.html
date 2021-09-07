@@ -1,5 +1,50 @@
-<mat-list role="list" class="navbar-component">
-  <mat-list-item role="listitem">Item 1</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<div class="navbar-component">
+  <div class="navbar-component__menu-btn">
+    <button mat-icon-button (click)="toggleDrawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <div class="navbar-component__logo">
+    <mat-icon class="navbar-component__user-icon">live_tv</mat-icon>
+  </div>
+
+  <div class="navbar-component__movie-types">
+    <button mat-raised-button [color]="getButtonColor(MovieTypes.popular)"
+            (click)="onChangeMovieType(MovieTypes.popular)">Popular
+    </button>
+
+    <button mat-raised-button [color]="getButtonColor(MovieTypes.topRated)"
+            (click)="onChangeMovieType(MovieTypes.topRated)">Top rated
+    </button>
+
+    <button mat-raised-button [color]="getButtonColor(MovieTypes.nowPlaying)"
+            (click)="onChangeMovieType(MovieTypes.nowPlaying)">Now playing
+    </button>
+
+    <button mat-raised-button [color]="getButtonColor(MovieTypes.upcoming)"
+            (click)="onChangeMovieType(MovieTypes.upcoming)">Upcoming
+    </button>
+  </div>
+
+  <div class="navbar-component__user-icon-wrapper">
+    <button mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+
+
+  <!--  <button mat-raised-button color="primary" [matMenuTriggerFor]="genresMenu">Genres-->
+  <!--    <mat-icon>keyboard_arrow_down</mat-icon>-->
+  <!--  </button>-->
+  <!--  <mat-menu #genresMenu="matMenu" yPosition="below">-->
+  <!--    <button mat-menu-item *ngFor="let g of genres">{{g['name']}}</button>-->
+  <!--  </mat-menu>-->
+
+  <!--  <button mat-raised-button color="primary" [matMenuTriggerFor]="yearsMenu">Years-->
+  <!--    <mat-icon>keyboard_arrow_down</mat-icon>-->
+  <!--  </button>-->
+  <!--  <mat-menu #yearsMenu="matMenu" yPosition="below">-->
+  <!--    <button mat-menu-item *ngFor="let y of years">{{y}}</button>-->
+  <!--  </mat-menu>-->
+</div>

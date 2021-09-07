@@ -4,16 +4,17 @@ import {Observable} from "rxjs"
 
 @Injectable()
 export class BaseApi {
-  private ApiKey = '4ff0d73b5002176095b05f70b1853f4b'
-  private baseUrl: string = 'https://api.themoviedb.org/3/movie/550?api_key=4ff0d73b5002176095b05f70b1853f4b'
+  private baseUrl: string = `https://api.themoviedb.org/3/`
+  private apiKey: string = '4ff0d73b5002176095b05f70b1853f4b'
 
   constructor(public http: HttpClient) {}
 
-  private getUrl(url: string): string {
-    return this.baseUrl + url
+  private getUrl(url: string, page: number = 1): string {
+    return this.baseUrl + url + `?api_key=${this.apiKey}&page=${page}`
   }
 
-  get(data: string): Observable<any> {
-    return this.http.get(this.getUrl(data))
+  get(url: string): Observable<any> {
+    return this.http.get(this.getUrl(url))
   }
+
 }
