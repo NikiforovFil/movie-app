@@ -8,11 +8,11 @@ import {Movie} from "../../common/models/Movie.model"
 
 @Injectable()
 export class MovieService extends BaseApi {
-  private apiKey: string = '4ff0d73b5002176095b05f70b1853f4b'
-  private genresUrl: string = `genre/movie/list?api_key=${this.apiKey}`
-  private popularMoviesUrl: string = `movie/popular?api_key=${this.apiKey}&page=1`
-  private topRatedMoviesUrl: string = `movie/top_rated?api_key=${this.apiKey}&page=1`
-  private nowPlayingMoviesUrl: string = `movie/now_playing?api_key=${this.apiKey}&page=1`
+  private genresUrl: string = `genre/movie/list`
+  private popularMoviesUrl: string = `movie/popular`
+  private topRatedMoviesUrl: string = `movie/top_rated`
+  private nowPlayingMoviesUrl: string = `movie/now_playing`
+  private upcomingMoviesUrl: string = `movie/upcoming`
 
   // private movieUrl: string = `movie/550?api_key=${this.apiKey}`
 
@@ -30,16 +30,20 @@ export class MovieService extends BaseApi {
       )
   }
 
-  getPopularMovie(): Observable<Movie[]> {
+  getPopularMovies(): Observable<Movie[]> {
     return this.getMovies(this.popularMoviesUrl)
   }
 
-  getTopRatedMovie(): Observable<Movie[]> {
+  getTopRatedMovies(): Observable<Movie[]> {
     return this.getMovies(this.topRatedMoviesUrl)
   }
 
-  getNowPlayingMovie(): Observable<Movie[]> {
+  getNowPlayingMovies(): Observable<Movie[]> {
     return this.getMovies(this.nowPlayingMoviesUrl)
+  }
+
+  getUpcomingMovies(): Observable<Movie[]> {
+    return this.getMovies(this.upcomingMoviesUrl)
   }
 
   getImgUrl(url: string): string {

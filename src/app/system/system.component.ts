@@ -1,7 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from "@angular/core"
+import {Component, OnDestroy, OnInit} from "@angular/core"
 import {forkJoin, Subscription} from "rxjs"
+import {MatDrawer} from "@angular/material/sidenav"
 
 import {Movie} from "../common/models/Movie.model"
+import {MovieTypes} from "../common/models/movieTypes"
 import {MovieService} from "./services/movie.service"
 
 @Component({
@@ -14,6 +16,7 @@ export class SystemComponent implements OnInit, OnDestroy {
   movies: Movie[] = []
   genresMap: { [id: number]: string } = {}
   genres: any[] = []
+  isOpenedSideNav = false
 
   sub1$: Subscription | undefined
 
@@ -21,46 +24,43 @@ export class SystemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub1$ = forkJoin([
-      this.moviesService.getPopularMovie(),
+      this.moviesService.getPopularMovies(),
       this.moviesService.getGenres()
     ])
       .subscribe(([movies, genres]) => {
         this.movies = movies
+        this.genres = genres.genres
         genres.genres.forEach((el: { id: number, name: string }) => this.genresMap[el.id] = el.name)
         this.isLoaded = true
       })
   }
 
-
-  // todo add cache
   onChangeMoviesType(type: string) {
     this.showMovies(type).subscribe((movies: Movie[]) => this.movies = movies)
   }
 
   showMovies(type: string) {
     switch (type) {
-      case 'popular':
+      case MovieTypes.popular:
         console.info('render popular movies')
-        return this.moviesService.getPopularMovie()
-      case 'top_rated':
+        return this.moviesService.getPopularMovies()
+      case MovieTypes.topRated:
         console.info('render top rated movies')
-        return this.moviesService.getTopRatedMovie()
-      case 'now_playing':
+        return this.moviesService.getTopRatedMovies()
+      case MovieTypes.nowPlaying:
         console.info('render now playing movies')
-        return this.moviesService.getNowPlayingMovie()
+        return this.moviesService.getNowPlayingMovies()
+      case MovieTypes.upcoming:
+        console.info('render upcoming movies')
+        return this.moviesService.getUpcomingMovies()
       default:
         console.info('render default movies')
-        return this.moviesService.getPopularMovie()
+        return this.moviesService.getPopularMovies()
     }
   }
 
-  renderTopRatedMovie() {
-    this.isLoaded = false
-    this.moviesService.getTopRatedMovie()
-      .subscribe((movies: Movie[]) => {
-        this.movies = movies
-        this.isLoaded = true
-      })
+  onToggleDrawer() {
+    this.isOpenedSideNav = !this.isOpenedSideNav
   }
 
   ngOnDestroy(): void {

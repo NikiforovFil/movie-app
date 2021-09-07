@@ -26,13 +26,17 @@
       </button>
     </mat-menu>
 
-    <mat-card-subtitle>
+    <mat-card-subtitle class="movie-card__all-genres">
       <span *ngFor=" let g of getGenres(); let i = index">
         <span *ngIf="i > 0">, </span>{{g}}</span>
     </mat-card-subtitle>
+    <mat-card-subtitle class="movie-card__genre">
+      <span>{{getGenres()[0]}}</span>
+    </mat-card-subtitle>
   </mat-card-header>
 
-  <img mat-card-image src="{{movieService.getImgUrl(movie.backdrop_path)}}" alt="{{movie.title}}" class="movie-card__content-img">
+  <img mat-card-image src="{{movieService.getImgUrl(movie.backdrop_path)}}" alt="{{movie.title}}"
+       class="movie-card__content-img">
 
   <mat-card-content>
     <p class="movie-card__content">
