@@ -3,15 +3,11 @@ $singleCardInRow:469px;
 
 .drawer {
   width: 100%;
-  min-height: 100vh;
-  position: fixed;
 
   mat-drawer{
+    min-height: 100vh;
+    position: fixed;
     border: none;
-
-    mf-sidebar {
-      overflow-y: hidden;
-    }
   }
 
   .sidenav {

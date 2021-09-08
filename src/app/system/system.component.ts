@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from "@angular/core"
-import {forkJoin, Subscription} from "rxjs"
-import {MatDrawer} from "@angular/material/sidenav"
+import {ActivatedRoute, Params} from "@angular/router"
+import {Subscription, combineLatest, Observable} from "rxjs"
+import {switchMap} from "rxjs/operators"
 
 import {Movie} from "../common/models/Movie.model"
 import {MovieTypes} from "../common/models/movieTypes"
@@ -20,11 +21,15 @@ export class SystemComponent implements OnInit, OnDestroy {
 
   sub1$: Subscription | undefined
 
-  constructor(private moviesService: MovieService) {}
+  constructor(private moviesService: MovieService,
+              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.sub1$ = forkJoin([
-      this.moviesService.getPopularMovies(),
+    this.sub1$ = combineLatest([
+      this.route.params
+        .pipe(
+          switchMap((param: Params) => this.showMovies(param.movieType))
+        ),
       this.moviesService.getGenres()
     ])
       .subscribe(([movies, genres]) => {
@@ -35,11 +40,7 @@ export class SystemComponent implements OnInit, OnDestroy {
       })
   }
 
-  onChangeMoviesType(type: string) {
-    this.showMovies(type).subscribe((movies: Movie[]) => this.movies = movies)
-  }
-
-  showMovies(type: string) {
+  showMovies(type: string): Observable<Movie[]> {
     switch (type) {
       case MovieTypes.popular:
         console.info('render popular movies')
@@ -59,12 +60,11 @@ export class SystemComponent implements OnInit, OnDestroy {
     }
   }
 
-  onToggleDrawer() {
+  onToggleDrawer(): void {
     this.isOpenedSideNav = !this.isOpenedSideNav
   }
 
   ngOnDestroy(): void {
     if (this.sub1$) this.sub1$.unsubscribe()
   }
-
 }

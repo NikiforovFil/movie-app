@@ -1,6 +1,35 @@
-<mat-list role="list">
-  <mat-list-item role="listitem">Logo</mat-list-item>
-  <mat-list-item role="listitem">Item 1</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-</mat-list>
+<div class="sidebar-component">
+  <!--  <button mat-raised-button color="primary" [matMenuTriggerFor]="genresMenu">Genres-->
+  <!--    <mat-icon>keyboard_arrow_right</mat-icon>-->
+  <!--  </button>-->
+  <!--  <mat-menu #genresMenu="matMenu"  xPosition="after">-->
+  <!--    <button mat-menu-item *ngFor="let g of genres">{{g['name']}}</button>-->
+  <!--  </mat-menu>-->
+
+  <!--  <button mat-raised-button color="primary" [matMenuTriggerFor]="yearsMenu">Years-->
+  <!--    <mat-icon>keyboard_arrow_right</mat-icon>-->
+  <!--  </button>-->
+  <!--  <mat-menu #yearsMenu="matMenu" yPosition="below" xPosition="after">-->
+  <!--    <button mat-menu-item *ngFor="let y of years">{{y}}</button>-->
+  <!--  </mat-menu>-->
+
+
+  <mat-list role="list">
+    <mat-list-item mat-ripple role="listitem" aria-current="false" routerLinkActive="sidebar-component__item_selected"
+                   [routerLink]="['/', MovieTypes.popular]"
+    >
+      Popular
+    </mat-list-item>
+
+    <mat-list-item mat-ripple role="listitem" aria-current="false" routerLinkActive="sidebar-component__item_selected"
+                   [routerLink]="['/', MovieTypes.topRated]">
+      Top rated
+    </mat-list-item>
+
+    <mat-list-item mat-ripple role="listitem" aria-current="false" routerLinkActive="sidebar-component__item_selected"
+                   [routerLink]="['/', MovieTypes.nowPlaying]">
+      Now playing
+    </mat-list-item>
+
+  </mat-list>
+</div>

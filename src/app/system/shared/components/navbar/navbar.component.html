@@ -10,20 +10,20 @@
   </div>
 
   <div class="navbar-component__movie-types">
-    <button mat-raised-button [color]="getButtonColor(MovieTypes.popular)"
-            (click)="onChangeMovieType(MovieTypes.popular)">Popular
+    <button mat-raised-button routerLinkActive="active"
+            [routerLink]="['/', MovieTypes.popular]">Popular
     </button>
 
-    <button mat-raised-button [color]="getButtonColor(MovieTypes.topRated)"
-            (click)="onChangeMovieType(MovieTypes.topRated)">Top rated
+    <button mat-raised-button routerLinkActive="active"
+            [routerLink]="['/', MovieTypes.topRated]">Top rated
     </button>
 
-    <button mat-raised-button [color]="getButtonColor(MovieTypes.nowPlaying)"
-            (click)="onChangeMovieType(MovieTypes.nowPlaying)">Now playing
+    <button mat-raised-button routerLinkActive="active"
+            [routerLink]="['/', MovieTypes.nowPlaying]">Now playing
     </button>
 
-    <button mat-raised-button [color]="getButtonColor(MovieTypes.upcoming)"
-            (click)="onChangeMovieType(MovieTypes.upcoming)">Upcoming
+    <button mat-raised-button routerLinkActive="active"
+            [routerLink]="['/', MovieTypes.upcoming]">Upcoming
     </button>
   </div>
 
@@ -32,19 +32,4 @@
       <mat-icon>account_circle</mat-icon>
     </button>
   </div>
-
-
-  <!--  <button mat-raised-button color="primary" [matMenuTriggerFor]="genresMenu">Genres-->
-  <!--    <mat-icon>keyboard_arrow_down</mat-icon>-->
-  <!--  </button>-->
-  <!--  <mat-menu #genresMenu="matMenu" yPosition="below">-->
-  <!--    <button mat-menu-item *ngFor="let g of genres">{{g['name']}}</button>-->
-  <!--  </mat-menu>-->
-
-  <!--  <button mat-raised-button color="primary" [matMenuTriggerFor]="yearsMenu">Years-->
-  <!--    <mat-icon>keyboard_arrow_down</mat-icon>-->
-  <!--  </button>-->
-  <!--  <mat-menu #yearsMenu="matMenu" yPosition="below">-->
-  <!--    <button mat-menu-item *ngFor="let y of years">{{y}}</button>-->
-  <!--  </mat-menu>-->
 </div>

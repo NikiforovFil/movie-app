@@ -4,7 +4,9 @@ import {RouterModule, Routes} from "@angular/router"
 import {SystemComponent} from "./system.component"
 
 const routes: Routes = [
-  {path: '', component: SystemComponent}
+  {
+    path: ':movieType', component: SystemComponent
+  },
 ]
 
 @NgModule({
