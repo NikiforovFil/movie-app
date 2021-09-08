@@ -1,12 +1,11 @@
 import {NgModule} from "@angular/core"
 import {RouterModule, Routes} from "@angular/router"
 
+
 import {SystemComponent} from "./system.component"
 
 const routes: Routes = [
-  {
-    path: ':movieType', component: SystemComponent
-  },
+  // {path: `:movieType`, component: SystemComponent},
 ]
 
 @NgModule({

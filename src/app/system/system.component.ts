@@ -28,7 +28,10 @@ export class SystemComponent implements OnInit, OnDestroy {
     this.sub1$ = combineLatest([
       this.route.params
         .pipe(
-          switchMap((param: Params) => this.showMovies(param.movieType))
+          switchMap((param: Params) => {
+            console.log(param)
+            return this.showMovies(param.movieType)
+          })
         ),
       this.moviesService.getGenres()
     ])
@@ -41,6 +44,7 @@ export class SystemComponent implements OnInit, OnDestroy {
   }
 
   showMovies(type: string): Observable<Movie[]> {
+    // this.isLoaded = false
     switch (type) {
       case MovieTypes.popular:
         console.info('render popular movies')

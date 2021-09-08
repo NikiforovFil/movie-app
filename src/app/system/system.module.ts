@@ -9,15 +9,13 @@ import {SidebarComponent} from "./shared/components/sidebar/sidebar.component"
 import {SystemRoutingModule} from "./system-routing.module"
 import {SystemComponent} from "./system.component";
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
-import { MoviesListComponent } from './components/movies-list/movies-list.component'
 
 @NgModule({
   declarations: [
     SystemComponent,
     SidebarComponent,
     NavbarComponent,
-    MovieCardComponent,
-    MoviesListComponent
+    MovieCardComponent
   ],
   imports: [
     SharedModule,

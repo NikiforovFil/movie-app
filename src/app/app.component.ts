@@ -7,8 +7,6 @@ import {initializeApp} from "firebase/app"
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movies-finder'
-
   firebaseConfig = {
     apiKey: "AIzaSyAnjzG-3_kcFQCxQr9IVoy8a2fFmgf9XFY",
     authDomain: "movie-finder-app.firebaseapp.com",

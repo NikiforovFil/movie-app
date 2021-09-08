@@ -3,9 +3,10 @@ import {RouterModule, Routes} from '@angular/router'
 import {MovieTypes} from "./common/models/movieTypes"
 import {SystemComponent} from "./system/system.component"
 
+
 const routes: Routes = [
-  {path: '', redirectTo: 'system', pathMatch: 'full'},
-  {path: `system/:movieType=${MovieTypes.popular}`, component: SystemComponent}
+  {path: '', redirectTo: `system/${MovieTypes.popular}`, pathMatch: 'full'},
+  {path: 'system/:movieType', component: SystemComponent}
 ]
 
 @NgModule({
