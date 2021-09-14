@@ -1,18 +1,14 @@
 <div class="main-wrapper">
-  <div class="app ">
+  <div class="app">
     <div *ngIf="!isLoaded">Loading...</div>
 
     <mat-drawer-container class="drawer" autosize *ngIf="isLoaded" [hasBackdrop]='true'>
       <mat-drawer #drawer class="sidenav" mode="side" [opened]="isOpenedSideNav" (closedStart)="onToggleDrawer()">
-        <MF-sidebar></MF-sidebar>
+        <MF-sidebar [genres]="genres"></MF-sidebar>
       </mat-drawer>
 
       <div class="sidenav-content">
-        <MF-navbar
-          [genres]="genres"
-          (changeMovieType)="onChangeMoviesType($event)"
-          (onToggleDrawer)="onToggleDrawer()"
-        ></MF-navbar>
+        <MF-navbar (onToggleDrawer)="onToggleDrawer()"></MF-navbar>
         <div class="movies-container">
           <MF-movie-card *ngFor="let m of movies" [movie]="m" [genresMap]="genresMap"></MF-movie-card>
         </div>

@@ -38,9 +38,18 @@
   .navbar-component__movie-types {
     width: 100%;
     display: flex;
+
+    button {
+      background: #2b363c;
+    }
+
+    .active {
+      color: #fff;
+      background: #e91e63;
+    }
   }
 
-  @media screen  {
+  @media screen {
     @media (max-width: $mobileTopBorderPx) {
       .navbar-component__menu-btn {
         display: block;

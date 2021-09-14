@@ -1,4 +1,4 @@
-export const MovieTypes = {
+export const MoviesTypes = {
   popular: 'POPULAR',
   topRated: 'TOP_RATED',
   nowPlaying: 'NOW_PLAYING',

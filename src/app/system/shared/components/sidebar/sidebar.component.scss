@@ -1,4 +1,25 @@
-mat-list {
-  background-color: darkcyan;
+.sidebar-component {
   height: 100%;
+  padding-top: 0;
+
+  mat-list {
+    mat-list-item {
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    :hover {
+      background: rgba(255, 255, 255, 0.04)
+    }
+
+    .sidebar-component__item_selected {
+      color: rgb(244, 146, 180);
+      background-color: rgba(233, 30, 99, 0.15);
+
+      :hover {
+        background: rgba(233, 30, 99, 0.3);
+      }
+    }
+
+  }
 }

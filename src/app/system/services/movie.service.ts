@@ -22,6 +22,17 @@ export class MovieService extends BaseApi {
     super(http)
   }
 
+  getUrlsForTests(): { [name: string]: string } {
+    return {
+      genresUrl: this.genresUrl,
+      popularMoviesUrl: this.popularMoviesUrl,
+      topRatedMoviesUrl: this.topRatedMoviesUrl,
+      nowPlayingMoviesUrl: this.nowPlayingMoviesUrl,
+      upcomingMoviesUrl: this.upcomingMoviesUrl,
+      pictureUrl: this.pictureUrl,
+    }
+  }
+
   private getMovies(url: string): Observable<Movie[]> {
     return this.get(url)
       .pipe(
@@ -50,8 +61,9 @@ export class MovieService extends BaseApi {
     return this.pictureUrl + url
   }
 
-  getGenres(): Observable<any> {
+  getGenres(): Observable<{ id: number, name: string }[]> {
     return this.get(this.genresUrl)
+      .pipe(map(response => response.genres))
   }
 
 }

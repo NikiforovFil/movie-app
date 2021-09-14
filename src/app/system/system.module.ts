@@ -8,7 +8,7 @@ import {NavbarComponent} from "./shared/components/navbar/navbar.component"
 import {SidebarComponent} from "./shared/components/sidebar/sidebar.component"
 import {SystemRoutingModule} from "./system-routing.module"
 import {SystemComponent} from "./system.component";
-import { MovieCardComponent } from './components/movie-card/movie-card.component'
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
 
 @NgModule({
   declarations: [

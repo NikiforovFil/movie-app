@@ -1,7 +1,7 @@
 export class Movie {
   adult: boolean
   backdrop_path: string
-  genres: any[]
+  genres: string[]
   id: number
   original_title: string
   overview: string
