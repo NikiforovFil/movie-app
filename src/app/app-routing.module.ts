@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core'
 import {RouterModule, Routes} from '@angular/router'
-import {MovieTypes} from "./common/models/movieTypes"
+import {MoviesTypes} from "./common/models/moviesTypes"
 import {SystemComponent} from "./system/system.component"
 
 
 const routes: Routes = [
-  {path: '', redirectTo: `system/${MovieTypes.popular}`, pathMatch: 'full'},
+  {path: '', redirectTo: `system/${MoviesTypes.popular}`, pathMatch: 'full'},
   {path: 'system/:movieType', component: SystemComponent}
 ]
 

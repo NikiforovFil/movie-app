@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core'
 
-import {MovieTypes} from "../../../../common/models/movieTypes"
+import {MoviesTypes} from "../../../../common/models/moviesTypes"
 
 @Component({
   selector: 'MF-sidebar',
@@ -8,9 +8,9 @@ import {MovieTypes} from "../../../../common/models/movieTypes"
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent  {
-  @Input() genres: any[] = []
+  @Input() genres: { id: number, name: string }[] = []
 
-  MovieTypes = MovieTypes
+  MovieTypes = MoviesTypes
   years: number[] = []
 
   constructor() {

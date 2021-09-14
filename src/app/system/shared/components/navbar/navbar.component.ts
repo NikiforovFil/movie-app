@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core'
 
-import {MovieTypes} from "../../../../common/models/movieTypes"
+import {MoviesTypes} from "../../../../common/models/moviesTypes"
 
 @Component({
   selector: 'MF-navbar',
@@ -10,7 +10,7 @@ import {MovieTypes} from "../../../../common/models/movieTypes"
 export class NavbarComponent {
   @Output() onToggleDrawer = new EventEmitter<void>()
 
-  MovieTypes = MovieTypes
+  MovieTypes = MoviesTypes
 
   toggleDrawer() {
     this.onToggleDrawer.emit()

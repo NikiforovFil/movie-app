@@ -16,6 +16,7 @@ export class AppComponent {
     appId: "1:69818344013:web:e5d1f44330b783b3def204"
   }
 
+
   app = initializeApp(this.firebaseConfig)
 }
 

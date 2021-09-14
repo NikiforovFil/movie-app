@@ -4,7 +4,7 @@ import {Subscription, combineLatest, Observable} from "rxjs"
 import {switchMap} from "rxjs/operators"
 
 import {Movie} from "../common/models/Movie.model"
-import {MovieTypes} from "../common/models/movieTypes"
+import {MoviesTypes} from "../common/models/moviesTypes"
 import {MovieService} from "./services/movie.service"
 
 @Component({
@@ -15,8 +15,8 @@ import {MovieService} from "./services/movie.service"
 export class SystemComponent implements OnInit, OnDestroy {
   isLoaded = false
   movies: Movie[] = []
-  genresMap: { [id: number]: string } = {}
-  genres: any[] = []
+  genresMap: { [genreId: number]: string } = {}
+  genres: { id: number, name: string }[] = []
   isOpenedSideNav = false
 
   sub1$: Subscription | undefined
@@ -28,17 +28,14 @@ export class SystemComponent implements OnInit, OnDestroy {
     this.sub1$ = combineLatest([
       this.route.params
         .pipe(
-          switchMap((param: Params) => {
-            console.log(param)
-            return this.showMovies(param.movieType)
-          })
+          switchMap((param: Params) => this.showMovies(param.movieType))
         ),
       this.moviesService.getGenres()
     ])
       .subscribe(([movies, genres]) => {
         this.movies = movies
-        this.genres = genres.genres
-        genres.genres.forEach((el: { id: number, name: string }) => this.genresMap[el.id] = el.name)
+        this.genres = genres
+        genres.map((el: { id: number, name: string }) => this.genresMap[el.id] = el.name)
         this.isLoaded = true
       })
   }
@@ -46,16 +43,16 @@ export class SystemComponent implements OnInit, OnDestroy {
   showMovies(type: string): Observable<Movie[]> {
     // this.isLoaded = false
     switch (type) {
-      case MovieTypes.popular:
+      case MoviesTypes.popular:
         console.info('render popular movies')
         return this.moviesService.getPopularMovies()
-      case MovieTypes.topRated:
+      case MoviesTypes.topRated:
         console.info('render top rated movies')
         return this.moviesService.getTopRatedMovies()
-      case MovieTypes.nowPlaying:
+      case MoviesTypes.nowPlaying:
         console.info('render now playing movies')
         return this.moviesService.getNowPlayingMovies()
-      case MovieTypes.upcoming:
+      case MoviesTypes.upcoming:
         console.info('render upcoming movies')
         return this.moviesService.getUpcomingMovies()
       default:
